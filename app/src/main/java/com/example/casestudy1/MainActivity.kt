@@ -3,9 +3,9 @@ package com.example.casestudy1
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.content.Intent
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-
 class MainActivity : AppCompatActivity() {
 
     private var isLogin = true
@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val etConfirm = findViewById<EditText>(R.id.etConfirmPassword)
         val btnAction = findViewById<Button>(R.id.btnAction)
         val tvToggle = findViewById<TextView>(R.id.tvToggle)
+        val tvSuccess = findViewById<TextView>(R.id.tvSuccess)
 
         btnAction.setOnClickListener {
             val email = etEmail.text.toString()
@@ -44,22 +45,28 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+
+                tvSuccess.visibility = View.VISIBLE
+                tvSuccess.text = "Welcome $email 🎉"
             }
-        }
 
-        tvToggle.setOnClickListener {
-            isLogin = !isLogin
+            tvToggle.setOnClickListener {
+                isLogin = !isLogin
 
-            if (isLogin) {
-                tvTitle.text = "Login"
-                btnAction.text = "Login"
-                etConfirm.visibility = View.GONE
-                tvToggle.text = "Don't have an account? Register"
-            } else {
-                tvTitle.text = "Register"
-                btnAction.text = "Register"
-                etConfirm.visibility = View.VISIBLE
-                tvToggle.text = "Already have an account? Login"
+                if (isLogin) {
+                    tvTitle.text = "Login"
+                    btnAction.text = "Login"
+                    etConfirm.visibility = View.GONE
+                    tvToggle.text = "Don't have an account? Register"
+                } else {
+                    tvTitle.text = "Register"
+                    btnAction.text = "Register"
+                    etConfirm.visibility = View.VISIBLE
+                    tvToggle.text = "Already have an account? Login"
+                }
             }
         }
     }
