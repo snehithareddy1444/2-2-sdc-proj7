@@ -20,7 +20,11 @@
 
         </activity>
 
+        <!-- Home Screen Activity -->
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
-
