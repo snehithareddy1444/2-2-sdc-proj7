@@ -47,6 +47,16 @@
         android:textColor="#0B0A0A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tvSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome! Login Successful 🎉"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"/>
+
 
     <TextView
         android:id="@+id/tvToggle"
